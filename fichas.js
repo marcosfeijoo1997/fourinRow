@@ -24,8 +24,7 @@ estrella.setAttribute("fill","black")
 
 let newGame=document.getElementById("newGame")
 addEventListener("DOMContentLoaded", () => {
-newGame.addEventListener("click",()=>
-console.log(array))
+
 
 let array=[
 
@@ -135,19 +134,19 @@ table.addEventListener("click",function contador(){
   {
          
     filas[i].children[j].children[0].children[1].classList.remove("starHidden")
-    filas[i].children[j].children[0].children[1].classList.add("starRed")
+    filas[i].children[j].children[0].children[1].classList.add("starBlue")
 
 
     filas[i+1].children[j].children[0].children[1].classList.remove("starHidden")
-    filas[i+1].children[j].children[0].children[1].classList.add("starRed")
+    filas[i+1].children[j].children[0].children[1].classList.add("starBlue")
 
 
     filas[i+2].children[j].children[0].children[1].classList.remove("starHidden")
-    filas[i+2].children[j].children[0].children[1].classList.add("starRed")
+    filas[i+2].children[j].children[0].children[1].classList.add("starBlue")
 
 
     filas[i+3].children[j].children[0].children[1].classList.remove("starHidden")
-    filas[i+3].children[j].children[0].children[1].classList.add("starRed")
+    filas[i+3].children[j].children[0].children[1].classList.add("starBlue")
         
         
         }
@@ -360,7 +359,7 @@ for (let i=0;i<=5;i++){
             if(count%2===1){if(circle.attributes.fill.value==='white'){
                 setTimeout(()=>{   circle.setAttribute("fill", "red")},10)}
             }}
-           setTimeout(()=>{console.log(circle.attributes.fill.value)},20) 
+     
         })
         
         }
@@ -395,7 +394,7 @@ for (let i=0;i<=5;i++){
                 if(count%2===1){if(circle.attributes.fill.value==='white'){
                     setTimeout(()=>{   circle.setAttribute("fill", "red")},10)}
                 }}
-               setTimeout(()=>{console.log(circle.attributes.fill.value)},20) 
+               
             })
             
             }
@@ -427,7 +426,7 @@ for (let i=0;i<=5;i++){
                     if(count%2===1){if(circle.attributes.fill.value==='white'){
                         setTimeout(()=>{   circle.setAttribute("fill", "red")},10)}
                     }}
-                   setTimeout(()=>{console.log(circle.attributes.fill.value)},20) 
+              
                 })
                 
                 }
@@ -460,7 +459,7 @@ for (let i=0;i<=5;i++){
                         if(count%2===1){if(circle.attributes.fill.value==='white'){
                             setTimeout(()=>{   circle.setAttribute("fill", "red")},10)}
                         }}
-                       setTimeout(()=>{console.log(circle.attributes.fill.value)},20) 
+                   
                     })
                     
                     }
@@ -493,7 +492,7 @@ for (let i=0;i<=5;i++){
                             if(count%2===1){if(circle.attributes.fill.value==='white'){
                                 setTimeout(()=>{   circle.setAttribute("fill", "red")},10)}
                             }}
-                           setTimeout(()=>{console.log(circle.attributes.fill.value)},20) 
+                      
                         })
                         
                         }

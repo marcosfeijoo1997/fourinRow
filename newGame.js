@@ -14,6 +14,6 @@ newGame.addEventListener("click",()=>{
         [0,0,0,0,0,0,0]
     
     ]
-console.log(fichaElementsn1)
+
   
 })
