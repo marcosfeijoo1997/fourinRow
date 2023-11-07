@@ -7,6 +7,8 @@ let fichaElements6=document.getElementsByClassName("sixththRow")
 let fichaElements7=document.getElementsByClassName("seventhRow")
 let filas=document.getElementsByTagName("tr")//[5].children[6]
 let count=0
+let disabledFunction=false
+let colorwin=null
 let numberOfFiles1=6
 let numberOfFiles2=6
 let numberOfFiles3=6
@@ -15,16 +17,11 @@ let numberOfFiles5=6
 let numberOfFiles6=6
 let numberOfFiles7=6
 let table=document.getElementsByTagName("table")[0]
-let star=document.getElementById("star")
-let estrella=document.createElement("polygon")
-estrella.setAttribute("points","60,15 70,45 100,45 75,65 85,95 60,75 35,95 45,65 20,45 50,45")
-estrella.setAttribute("fill","black")
-// <polygon points="60,15 70,45 100,45 75,65 85,95 60,75 35,95 45,65 20,45 50,45" fill="red" />
-
-
+let win=document.getElementById("win")
 let newGame=document.getElementById("newGame")
-addEventListener("DOMContentLoaded", () => {
 
+
+addEventListener("DOMContentLoaded", () => {
 
 let array=[
 
@@ -36,9 +33,44 @@ let array=[
     [0,0,0,0,0,0,0],
 
 
-]
+]   
+newGame.addEventListener("click",()=>{
+    array=[
+
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0],    
+        [0,0,0,0,0,0,0],
+    
+    
+    ] 
+    count=0
+    numberOfFiles1=6
+    numberOfFiles2=6
+    numberOfFiles3=6
+    numberOfFiles4=6
+    numberOfFiles5=6
+    numberOfFiles6=6
+    numberOfFiles7=6
+ disabledFunction=false
+ table.style.background='linear-gradient(to right,rgb(5, 139, 0),rgb(27, 0, 27))'
+
+ colorwin=null
+    for (let i=0;i<=5;i++){    let filas=table.getElementsByTagName("tr")[i]
+    for(let j=0;j<=6;j++) {
+  filas.children[j].children[0].children[0].setAttribute("fill","white")
+   filas.children[j].children[0].children[1].classList.remove("starBlue","starRed")
+   filas.children[j].children[0].children[1].classList.add("starHidden")
+   win.textContent=``
+   
+    }
 
 
+}
+
+})
 
 
 /*2 es rojo, 1 es azul*/
@@ -46,6 +78,9 @@ table.addEventListener("click",function contador(){
 
 
 
+   
+
+     
 
 
 
@@ -53,7 +88,7 @@ table.addEventListener("click",function contador(){
     for (let i=0; i<=5;i++){
         for(let j=0;j<=3;j++){
       
-            if((array[i][j]>0)&&(array[i][j]===array[i][j+1])&&(array[i][j]===array[i][j+2])&&(array[i][j]===array[i][j+3])){
+            if((array[i][j]>0)&&(array[i][j]===array[i][j+1])&&(array[i][j]===array[i][j+2])&&(array[i][j]===array[i][j+3]&&disabledFunction==false)){
            
                if(array[i][j]===1){
           
@@ -74,6 +109,8 @@ table.addEventListener("click",function contador(){
 
                     filas[i].children[j+3].children[0].children[1].classList.remove("starHidden")
                     filas[i].children[j+3].children[0].children[1].classList.add("starRed")
+                    disabledFunction=true
+                    colorwin='rojo'
         
 
    
@@ -94,6 +131,8 @@ table.addEventListener("click",function contador(){
 
                filas[i].children[j+3].children[0].children[1].classList.remove("starHidden")
                filas[i].children[j+3].children[0].children[1].classList.add("starBlue")}
+               disabledFunction=true
+               colorwin='azul'
 
             }
             
@@ -105,7 +144,7 @@ table.addEventListener("click",function contador(){
     for (let i=0;i<=2;i++){
         for (let j=0;j<=6;j++){
 
-          if((array[i][j]>0)&&(array[i][j]===array[i+1][j])&&(array[i][j]===array[i+2][j])&&(array[i][j]===array[i+3][j])){
+          if((array[i][j]>0)&&(array[i][j]===array[i+1][j])&&(array[i][j]===array[i+2][j])&&(array[i][j]===array[i+3][j])&&disabledFunction==false){
   
             if(array[i][j]===1){
           
@@ -126,6 +165,8 @@ table.addEventListener("click",function contador(){
 
                 filas[i+3].children[j].children[0].children[1].classList.remove("starHidden")
                 filas[i+3].children[j].children[0].children[1].classList.add("starRed")
+                disabledFunction=true
+                colorwin='azul'
     
 
 
@@ -147,6 +188,8 @@ table.addEventListener("click",function contador(){
 
     filas[i+3].children[j].children[0].children[1].classList.remove("starHidden")
     filas[i+3].children[j].children[0].children[1].classList.add("starBlue")
+    disabledFunction=true
+    colorwin='rojo'
         
         
         }
@@ -154,12 +197,15 @@ table.addEventListener("click",function contador(){
         }
     }
 //diagonal hacia la derecha
+
+if(disabledFunction==false){
     for (let i=5;i>0;i--){
         for(let j=0;j<=3;j++){
-          if((array[i][j]>0)&&(array[i][j]===array[i-1][j+1])&&(array[i][j]===array[i-2][j+2])&&(array[i][j]===array[i-3][j+3])){
+          if((array[i][j]>0)&&(array[i][j]===array[i-1][j+1])&&(array[i][j]===array[i-2][j+2])&&(array[i][j]===array[i-3][j+3])&&(disabledFunction==false)){
+            
 
             if(array[i][j]===1){
-          
+      
            
       
         
@@ -177,6 +223,8 @@ table.addEventListener("click",function contador(){
 
                 filas[i-3].children[j+3].children[0].children[1].classList.remove("starHidden")
                 filas[i-3].children[j+3].children[0].children[1].classList.add("starRed")
+                disabledFunction=true
+                colorwin='azul'
     
 
 
@@ -197,15 +245,22 @@ table.addEventListener("click",function contador(){
 
     filas[i-3].children[j+3].children[0].children[1].classList.remove("starHidden")
     filas[i-3].children[j+3].children[0].children[1].classList.add("starBlue")
+    disabledFunction=true
+    colorwin='rojo'
 
         }
           }
+       
         }
     }
+}
+
+
+
   //diagonal hacia la izq
     for (let i=0;i<=2;i++){
         for(let j=0;j<=3;j++){
-          if((array[i][j]>0)&&(array[i][j]===array[i+1][j+1])&&(array[i][j]===array[i+2][j+2])&&(array[i][j]===array[i+3][j+3])){
+          if((array[i][j]>0)&&(array[i][j]===array[i+1][j+1])&&(array[i][j]===array[i+2][j+2])&&(array[i][j]===array[i+3][j+3])&&disabledFunction==false){
 
             if(array[i][j]===1){
           
@@ -226,6 +281,8 @@ table.addEventListener("click",function contador(){
 
                 filas[i+3].children[j+3].children[0].children[1].classList.remove("starHidden")
                 filas[i+3].children[j+3].children[0].children[1].classList.add("starRed")
+                disabledFunction=true
+                colorwin='azul'
     
 
            }
@@ -245,6 +302,8 @@ table.addEventListener("click",function contador(){
 
     filas[i+3].children[j+3].children[0].children[1].classList.remove("starHidden")
     filas[i+3].children[j+3].children[0].children[1].classList.add("starBlue")
+    disabledFunction=true
+    colorwin='rojo'
         }
           }
         }
@@ -252,13 +311,25 @@ table.addEventListener("click",function contador(){
     
 
 
+ 
+        if (colorwin!=null){
+            win.textContent=`El ganador es ${colorwin}`
+        colorwin==='azul'?table.style.background='linear-gradient(to right,rgb(0, 0, 139),rgb(27, 0, 27))':table.style.background='linear-gradient(to right,rgb(139, 0, 0),rgb(27, 0, 27))'}
+    
+        else {   win.textContent=``}
 
-})
+    
+ 
+    }
+    
+    )
   
 for (let i=0;i<=5;i++){
     
-    fichaElements1[i].addEventListener("click",
-function firstRowFunction(){
+
+        
+      if(disabledFunction==false) { fichaElements1[i].addEventListener("click",
+()=>{
     
 
     if (numberOfFiles1>0){
@@ -277,7 +348,7 @@ if(count%2===1){
         let circle=fichaElements1[numberOfFiles1].firstChild.children[0];
         
     
-        if(circle.attributes.fill.value=='white'){
+        if(circle.attributes.fill.value=='white'&&disabledFunction==false){
             count++
     
          
@@ -291,11 +362,12 @@ if(count%2===1){
         }}
   
     })
-    
+}
     }
-    
+
 for (let i=0;i<=5;i++){
-    fichaElements2[i].addEventListener("click",()=>{
+
+    if(disabledFunction==false) { fichaElements2[i].addEventListener("click",()=>{
         if (numberOfFiles2>0){
 
             if(count%2===1){
@@ -312,7 +384,7 @@ for (let i=0;i<=5;i++){
         let circle=fichaElements2[numberOfFiles2].firstChild.children[0];
         
     
-        if(circle.attributes.fill.value=='white'){
+        if(circle.attributes.fill.value=='white'&&disabledFunction==false){
             count++
     
          
@@ -326,11 +398,12 @@ for (let i=0;i<=5;i++){
         }}
  
     })
+}
     
     }
     
 for (let i=0;i<=5;i++){
-        fichaElements3[i].addEventListener("click",()=>{
+    if(disabledFunction==false) {fichaElements3[i].addEventListener("click",()=>{
             if (numberOfFiles3>0){
 
                 if(count%2===1){
@@ -347,7 +420,7 @@ for (let i=0;i<=5;i++){
             let circle=fichaElements3[numberOfFiles3].firstChild.children[0];
             
         
-            if(circle.attributes.fill.value=='white'){
+            if(circle.attributes.fill.value=='white'&&disabledFunction==false){
                 count++
         
              
@@ -361,12 +434,12 @@ for (let i=0;i<=5;i++){
             }}
      
         })
-        
+    }
         }
         
         
 for (let i=0;i<=5;i++){
-            fichaElements4[i].addEventListener("click",()=>{
+    if(disabledFunction==false) {fichaElements4[i].addEventListener("click",()=>{
                 if (numberOfFiles4>0){
 
                     if(count%2===1){
@@ -382,7 +455,7 @@ for (let i=0;i<=5;i++){
                 let circle=fichaElements4[numberOfFiles4].firstChild.children[0];
                 
             
-                if(circle.attributes.fill.value=='white'){
+                if(circle.attributes.fill.value=='white'&&disabledFunction==false){
                     count++
             
                  
@@ -396,10 +469,10 @@ for (let i=0;i<=5;i++){
                 }}
                
             })
-            
+        }
             }
 for (let i=0;i<=5;i++){
-                fichaElements5[i].addEventListener("click",()=>{
+    if(disabledFunction==false){fichaElements5[i].addEventListener("click",()=>{
                     if (numberOfFiles5>0){
 
                         if(count%2===1){
@@ -414,7 +487,7 @@ for (let i=0;i<=5;i++){
                     let circle=fichaElements5[numberOfFiles5].firstChild.children[0];
                     
                 
-                    if(circle.attributes.fill.value=='white'){
+                    if(circle.attributes.fill.value=='white'&&disabledFunction==false){
                         count++
                 
                      
@@ -428,11 +501,11 @@ for (let i=0;i<=5;i++){
                     }}
               
                 })
-                
+            }
                 }
                 
 for (let i=0;i<=5;i++){
-                    fichaElements6[i].addEventListener("click",()=>{
+    if(disabledFunction==false){fichaElements6[i].addEventListener("click",()=>{
                         if (numberOfFiles6>0){
 
                             if(count%2===1){
@@ -447,7 +520,7 @@ for (let i=0;i<=5;i++){
                         let circle=fichaElements6[numberOfFiles6].firstChild.children[0];
                         
                     
-                        if(circle.attributes.fill.value=='white'){
+                        if(circle.attributes.fill.value=='white'&&disabledFunction==false){
                             count++
                     
                          
@@ -461,10 +534,10 @@ for (let i=0;i<=5;i++){
                         }}
                    
                     })
-                    
+                }
                     }
 for (let i=0;i<=5;i++){
- fichaElements7[i].addEventListener("click",()=>{
+    if(disabledFunction==false) {fichaElements7[i].addEventListener("click",()=>{
     if (numberOfFiles7>0){
 
         if(count%2===1){
@@ -480,7 +553,7 @@ for (let i=0;i<=5;i++){
        let circle=fichaElements7[numberOfFiles7].firstChild.children[0];
                             
                         
-                            if(circle.attributes.fill.value=='white'){
+                            if(circle.attributes.fill.value=='white'&&disabledFunction==false){
                                 count++
                         
                              
@@ -494,11 +567,8 @@ for (let i=0;i<=5;i++){
                             }}
                       
                         })
-                        
+                    }
                         }
-                        star.addEventListener("click",()=>{
-
-                            filas[3].children[4].children[0].appendChild(estrella)
-                        
-                        })
+                   
+                  
                     });
