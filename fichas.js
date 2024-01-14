@@ -110,7 +110,7 @@ table.addEventListener("click",function contador(){
                     filas[i].children[j+3].children[0].children[1].classList.remove("starHidden")
                     filas[i].children[j+3].children[0].children[1].classList.add("starRed")
                     disabledFunction=true
-                    colorwin='rojo'
+                    colorwin='azul'
         
 
    
@@ -130,9 +130,12 @@ table.addEventListener("click",function contador(){
 
 
                filas[i].children[j+3].children[0].children[1].classList.remove("starHidden")
-               filas[i].children[j+3].children[0].children[1].classList.add("starBlue")}
+               filas[i].children[j+3].children[0].children[1].classList.add("starBlue")
                disabledFunction=true
-               colorwin='azul'
+               colorwin='rojo'
+            
+            }
+           
 
             }
             
